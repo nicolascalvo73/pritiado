@@ -2,16 +2,16 @@ import { forwardRef } from 'react'
 import { PETITION_URL } from '../config/stages'
 
 export const SECTIONS = [
-  { id: 'botella', name: 'Dorso de la botella' },
-  { id: 'caja', name: 'Dorso de la caja' },
+  { id: 'botella', name: 'Qué es el pritiado' },
+  { id: 'caja', name: 'Cómo se arma' },
   { id: 'firma', name: 'Firmá' },
 ] as const
 
 const STEPS = [
   { t: 'Cortá la botella', d: 'Una botella de gaseosa de 2 litros, cortada a la altura del hombro. Esa es la jarra.' },
   { t: 'Hielo hasta arriba', d: 'Mucho hielo. Sin hielo no hay pritiado.' },
-  { t: 'El vino tinto', d: 'Vino tinto de mesa, el de todos los días, de caja.' },
-  { t: 'Gaseosa de limón', d: 'Se completa con gaseosa de limón y se pasa de mano en mano.' },
+  { t: 'El vino Toro', d: 'Vino Toro de mesa, el de todos los días, de caja.' },
+  { t: 'Pritty Limón', d: 'Se completa con Pritty Limón y se pasa de mano en mano.' },
 ]
 
 const REASONS = [
@@ -32,10 +32,9 @@ export const Content = forwardRef<HTMLDivElement>(function Content(_, ref) {
       <div className="spacer" aria-hidden="true" />
 
       <section className="sec" data-sec="0" id="botella">
-        <p className="kicker">Dorso de la botella · 1 de 2</p>
         <h2 className="d h2">Qué es el pritiado</h2>
         <p className="lead">
-          Es la bebida de Córdoba: vino tinto, gaseosa de limón y mucho hielo, preparados y servidos en una botella de
+          Es la bebida de Córdoba: vino Toro, Pritty Limón y mucho hielo, preparados y servidos en una botella de
           plástico cortada. Se toma en juntadas, en el río, en los asados y en los días de calor.
         </p>
 
@@ -59,7 +58,6 @@ export const Content = forwardRef<HTMLDivElement>(function Content(_, ref) {
       </section>
 
       <section className="sec" data-sec="1" id="caja">
-        <p className="kicker">Dorso de la caja · 2 de 2</p>
         <h2 className="d h2">Cómo se arma</h2>
         <ol className="steps">
           {STEPS.map((s, i) => (

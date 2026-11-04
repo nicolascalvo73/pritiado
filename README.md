@@ -30,7 +30,7 @@ link real de la solicitud cuando exista. Lo usa el botón "Firmar la solicitud" 
 
 ## Música
 
-- Archivo: `public/audio/cuarteto.mp3` (ruta en `AUDIO_URL`). Suena en loop a volumen 0.6.
+- Archivo: `public/audio/cuarteto.mp3` (ruta en `AUDIO_URL`). Suena en loop a volumen 0.5.
 - "Entrar con sonido" la arranca; "Entrar sin sonido" entra en silencio; el ecualizador de arriba a la izquierda
   silencia y reanuda.
 - El mp3 publicado es una copia del original (`../cuarteto.mp3`, sin tocar) recortada en el segundo 191,6 con un
@@ -56,7 +56,7 @@ o falla al cargar, queda el objeto generado. No hay que tocar código: alcanza c
 - **Escala**: libre (metros, centímetros, lo que sea). Al cargar, el modelo se escala de forma uniforme para tener la
   misma altura que el objeto generado de su etapa, se apoya en la misma base (sobre el pedestal) y se centra en X/Z.
 - **Orientación**: la convención de glTF. **+Y hacia arriba** y el **frente mirando a +Z** (hacia la cámara). El dorso
-  (−Z) es el que se ve en las secciones "Dorso de la botella" y "Dorso de la caja".
+  (−Z) es el que se ve en las secciones "Qué es el pritiado" y "Cómo se arma".
 - **Origen**: no importa, se recentra.
 - Materiales PBR estándar (metallic/roughness). Si viene comprimido con Draco, el decodificador se baja de la CDN de
   Google la primera vez.

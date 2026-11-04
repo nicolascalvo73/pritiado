@@ -76,7 +76,7 @@ export function Overlay(p: Props) {
             </div>
             <button
               className="round solid"
-              aria-label={last ? 'Ver el dorso de la botella' : 'Etapa siguiente'}
+              aria-label={last ? 'Ir al contenido' : 'Etapa siguiente'}
               onClick={last ? p.onDescend : p.onNext}
             >
               <svg width="12" height="18" viewBox="0 0 12 18" aria-hidden="true"><path d="M2 1l8 8-8 8" stroke="currentColor" strokeWidth="2.2" fill="none" /></svg>

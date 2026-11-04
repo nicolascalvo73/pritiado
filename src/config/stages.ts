@@ -18,7 +18,7 @@ const model = (id: StageId) => `${import.meta.env.BASE_URL}models/${id}.glb`
 
 export const STAGES: StageConfig[] = [
   { id: 'bottle', caption: 'Pritty de limón.', glow: '#EDE23B', word: 'PRITTY', modelUrl: model('bottle') },
-  { id: 'box', caption: 'Vino tinto Toro.', glow: '#C0322C', word: 'TORO', modelUrl: model('box') },
+  { id: 'box', caption: 'Vino Toro.', glow: '#C0322C', word: 'TORO', modelUrl: model('box') },
   { id: 'ice', caption: 'Mucho hielo.', glow: '#CFE3EC', word: 'HIELO', modelUrl: model('ice') },
   { id: 'drink', caption: 'Pritiado.', glow: '#8A1C38', word: 'PRITIADO', modelUrl: model('drink') },
 ]

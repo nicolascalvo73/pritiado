@@ -7,7 +7,7 @@ interface Props {
   onGoSection: (i: number) => void
 }
 
-const STAGE_LINKS = ['Pritty de limón', 'Vino tinto', 'Hielo', 'El pritiado']
+const STAGE_LINKS = ['Pritty de limón', 'Vino Toro', 'Hielo', 'El pritiado']
 
 export function Menu({ open, onClose, onGoStage, onGoSection }: Props) {
   return (

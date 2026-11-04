@@ -38,7 +38,7 @@ export default function App() {
   useEffect(() => {
     const a = new Audio(AUDIO_URL)
     a.loop = true
-    a.volume = 0.6
+    a.volume = 0.5
     a.preload = 'auto'
     audio.current = a
     return () => {
