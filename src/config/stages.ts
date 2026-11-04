@@ -26,8 +26,8 @@ export const STAGES: StageConfig[] = [
 /** Palabras de marca del fondo: palabra gigante detrás del objeto (true = visible). */
 export const SHOW_BRAND_WORDS = true
 
-/** Enlace de la solicitud en change.org. Reemplazar por el real cuando exista. */
-export const PETITION_URL = 'https://www.change.org/'
+/** Enlace de la solicitud en change.org. */
+export const PETITION_URL = 'https://c.org/mhSvkGmTNR'
 
 /** Canción de cuarteto de fondo (en loop). Poner el archivo en /public/audio/. */
 export const AUDIO_URL = `${import.meta.env.BASE_URL}audio/cuarteto.mp3`

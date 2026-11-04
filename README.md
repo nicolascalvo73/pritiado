@@ -25,8 +25,8 @@ dorso de la botella y de la caja, y cierra con el botón para firmar en change.o
 
 ## Link de change.org
 
-`PETITION_URL` en `src/config/stages.ts`. Hoy es un placeholder (`https://www.change.org/`): reemplazarlo por el
-link real de la solicitud cuando exista. Lo usa el botón "Firmar la solicitud" (se abre en otra pestaña).
+`PETITION_URL` en `src/config/stages.ts`: https://c.org/mhSvkGmTNR (la solicitud "Declarar al pritiado como
+Patrimonio Cultural Inmaterial de la Humanidad"). Lo usa el botón "Firmar la solicitud" (se abre en otra pestaña).
 
 ## Música
 
