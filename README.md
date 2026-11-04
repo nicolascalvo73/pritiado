@@ -58,15 +58,16 @@ Patrimonio Cultural Inmaterial de la Humanidad"). Lo usa el botón "Firmar la so
 
 ## Modelos 3D (.glb)
 
-Cada etapa busca un .glb en `public/models/`. Si el archivo está, reemplaza al objeto generado en código; si no está
-o falla al cargar, queda el objeto generado. No hay que tocar código: alcanza con poner el archivo.
+Cada etapa usa un .glb de `src/assets/models/` si existe. Se detecta al compilar (`import.meta.glob`): si el archivo
+no está, la etapa no hace ninguna petición y usa el objeto generado; si está pero falla al cargar, también. No hay que
+tocar código: alcanza con poner el archivo y volver a compilar (en `npm run dev` se toma al recargar).
 
 | Etapa | Archivo esperado            | Ocupa la altura de                            |
 |-------|-----------------------------|-----------------------------------------------|
-| 1     | `public/models/bottle.glb`  | la botella (0,5 L)                            |
-| 2     | `public/models/box.glb`     | el brik de 1 L                                |
-| 3     | `public/models/ice.glb`     | el grupo de cubitos                           |
-| 4     | `public/models/drink.glb`   | la jarra (botella de 2 L cortada) con el trago |
+| 1     | `src/assets/models/bottle.glb`  | la botella (0,5 L)                            |
+| 2     | `src/assets/models/box.glb`     | el brik de 1 L                                |
+| 3     | `src/assets/models/ice.glb`     | el grupo de cubitos                           |
+| 4     | `src/assets/models/drink.glb`   | la jarra (botella de 2 L cortada) con el trago |
 
 - **Escala**: libre (metros, centímetros, lo que sea). Al cargar, el modelo se escala de forma uniforme para tener la
   misma altura que el objeto generado de su etapa, se apoya en la misma base (sobre el pedestal) y se centra en X/Z.
@@ -75,7 +76,7 @@ o falla al cargar, queda el objeto generado. No hay que tocar código: alcanza c
 - **Origen**: no importa, se recentra.
 - Materiales PBR estándar (metallic/roughness). Si viene comprimido con Draco, el decodificador se baja de la CDN de
   Google la primera vez.
-- Para usar otro nombre de archivo, cambiar `modelUrl` de esa etapa en `src/config/stages.ts`.
+- Los nombres de archivo salen del `id` de cada etapa en `src/config/stages.ts`.
 
 ## Rendimiento
 
@@ -102,6 +103,12 @@ base `/pritiado/`). También se puede lanzar a mano desde la pestaña Actions.
 
 `vite.preview.config.ts` arma una vista previa de un solo HTML autocontenido (`dist-preview/`) para revisar en el
 celular: `npx vite build -c vite.preview.config.ts`.
+
+## Compartir
+
+`index.html` tiene las etiquetas Open Graph (título, descripción e imagen `public/og.jpg` de 1200×630) para que el
+link se vea con imagen en WhatsApp y redes. Las URL de `og:url` y `og:image` son absolutas: si el sitio pasa a
+`labs.mondistudio.com.ar/pritiado/`, cambiarlas ahí. Íconos: `public/favicon.svg` y `public/apple-touch-icon.png`.
 
 ## Texto legal
 

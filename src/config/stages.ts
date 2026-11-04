@@ -13,8 +13,12 @@ export interface StageConfig {
   modelUrl?: string // .glb que reemplaza al objeto genérico; si el archivo no está, queda el genérico
 }
 
-/** Modelo de una etapa: public/models/<id>.glb (ver README, "Modelos 3D"). */
-const model = (id: StageId) => `${import.meta.env.BASE_URL}models/${id}.glb`
+/**
+ * Modelo de una etapa: src/assets/models/<id>.glb (ver README, "Modelos 3D").
+ * Se detecta al compilar: si el archivo no está, la etapa no pide nada y usa el objeto generado.
+ */
+const MODELS = import.meta.glob<string>('../assets/models/*.glb', { eager: true, query: '?url', import: 'default' })
+const model = (id: StageId): string | undefined => MODELS[`../assets/models/${id}.glb`]
 
 export const STAGES: StageConfig[] = [
   { id: 'bottle', caption: 'Pritty Limón.', glow: '#EDE23B', word: 'PRITTY', modelUrl: model('bottle') },

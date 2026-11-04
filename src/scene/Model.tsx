@@ -3,14 +3,13 @@ import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 
 /**
- * Objeto de una etapa: muestra el .glb de `url` si existe y, si no, el objeto generado en código.
+ * Objeto de una etapa: muestra el .glb de `url` si hay uno y, si no (o si falla al cargar), el objeto generado.
  * El .glb se escala para ocupar la misma altura que el objeto generado, apoyado en la misma base
  * y centrado en X/Z, así conserva el lugar sobre el pedestal y la rotación del carrusel.
  */
 export function StageObject({ Generic, url }: { Generic: ComponentType; url?: string }) {
   const generic = useRef<THREE.Group>(null)
   const [fit, setFit] = useState<THREE.Box3 | null>(null)
-  const [available, setAvailable] = useState(false)
   const [ready, setReady] = useState(false)
 
   // caja del objeto generado, en sus coordenadas locales (antes del primer cuadro no hay giro ni balanceo)
@@ -23,21 +22,12 @@ export function StageObject({ Generic, url }: { Generic: ComponentType; url?: st
     setFit(box)
   }, [])
 
-  useEffect(() => {
-    if (!url) return
-    let alive = true
-    glbExists(url).then((ok) => alive && setAvailable(ok))
-    return () => {
-      alive = false
-    }
-  }, [url])
-
   return (
     <>
       <group ref={generic} visible={!ready}>
         <Generic />
       </group>
-      {url && available && fit && (
+      {url && fit && (
         <Fallback onError={() => setReady(false)}>
           <Suspense fallback={null}>
             <Glb url={url} fit={fit} onReady={() => setReady(true)} />
@@ -66,16 +56,6 @@ function Glb({ url, fit, onReady }: { url: string; fit: THREE.Box3; onReady: () 
   }, [scene, fit])
   useEffect(onReady, [obj, onReady])
   return <primitive object={obj} />
-}
-
-/** En dev, Vite responde index.html (200) a un archivo que no existe: se descarta todo lo que sea HTML. */
-async function glbExists(url: string) {
-  try {
-    const r = await fetch(url, { method: 'HEAD' })
-    return r.ok && !(r.headers.get('content-type') || '').includes('text/html')
-  } catch {
-    return false
-  }
 }
 
 class Fallback extends Component<{ children: ReactNode; onError: () => void }, { failed: boolean }> {
