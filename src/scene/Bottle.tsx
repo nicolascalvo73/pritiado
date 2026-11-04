@@ -1,7 +1,8 @@
 import { useMemo } from 'react'
 import * as THREE from 'three'
 import { SHELL_T_W, applyPetals, smoothProfile, yOf } from './profile'
-import { makeDropletTexture, makeLabelTexture } from './textures'
+import { makeDropletTexture } from './textures'
+import { prittyLabel } from './labels'
 
 /** Franja de la etiqueta (t = 0.40 .. 0.68 del alto, medido desde la tapa). */
 const LABEL_PTS: [number, number][] = [
@@ -77,7 +78,7 @@ export function Bottle() {
     const ring = new THREE.TorusGeometry(0.262, 0.016, 12, 96)
     const dropTex = makeDropletTexture()
     dropTex.repeat.set(3, 3)
-    const labelTex = makeLabelTexture()
+    const labelTex = prittyLabel()
     return { shell, liquid, drops, label, cap, ring, dropTex, labelTex }
   }, [])
 
@@ -109,12 +110,12 @@ export function Bottle() {
         />
       </mesh>
 
-      {/* etiqueta dorada metalizada, lisa e intercambiable */}
+      {/* etiqueta metalizada (foto real, ver src/scene/labels.ts) */}
       <mesh geometry={m.label}>
         <meshStandardMaterial
           map={m.labelTex}
-          metalness={0.55}
-          roughness={0.38}
+          metalness={0.35}
+          roughness={0.4}
           envMapIntensity={1.5}
         />
       </mesh>

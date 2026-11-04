@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import * as THREE from 'three'
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
-import { makeBoxFaceTexture } from './textures'
+import { toroFaces } from './labels'
 
 /** Envase de 1 litro tipo brik. Medidas reales aprox. 9,5 × 6,4 × 16,4 cm; 1 unidad = 6 cm. */
 export const BOX_W = 1.58
@@ -14,7 +14,8 @@ export function Box() {
     const body = new RoundedBoxGeometry(BOX_W, BOX_H, BOX_D, 6, R)
     const fin = new RoundedBoxGeometry(BOX_W - 0.04, 0.09, 0.1, 3, 0.03)
     const panel = new THREE.PlaneGeometry(BOX_W - R * 2, BOX_H - R * 2)
-    return { body, fin, panel, front: makeBoxFaceTexture('front'), back: makeBoxFaceTexture('back') }
+    const sidePanel = new THREE.PlaneGeometry(BOX_D - R * 2, BOX_H - R * 2)
+    return { body, fin, panel, sidePanel, ...toroFaces() }
   }, [])
 
   const ribs = useMemo(() => Array.from({ length: 14 }, (_, i) => -BOX_W / 2 + 0.1 + (i * (BOX_W - 0.2)) / 13), [])
@@ -32,6 +33,12 @@ export function Box() {
       <mesh geometry={m.panel} position={[0, 0, -BOX_D / 2 - 0.003]} rotation-y={Math.PI}>
         <meshPhysicalMaterial map={m.back} roughness={0.5} clearcoat={0.3} clearcoatRoughness={0.4} envMapIntensity={0.8} />
       </mesh>
+      {/* laterales */}
+      {[1, -1].map((s) => (
+        <mesh key={s} geometry={m.sidePanel} position={[s * (BOX_W / 2 + 0.003), 0, 0]} rotation-y={(s * Math.PI) / 2}>
+          <meshPhysicalMaterial map={m.side} roughness={0.5} clearcoat={0.3} clearcoatRoughness={0.4} envMapIntensity={0.8} />
+        </mesh>
+      ))}
       {/* aleta de sellado con estrías */}
       <group position={[0, BOX_H / 2 + 0.04, 0]}>
         <mesh geometry={m.fin}>

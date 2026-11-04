@@ -19,9 +19,24 @@ dorso de la botella y de la caja, y cierra con el botón para firmar en change.o
   `SHOW_BRAND_WORDS`, `PETITION_URL`, `AUDIO_URL` y los colores.
 - `src/scene/Scene.tsx`: cámara, luces de estudio, pedestal, rotación y resolución (dpr).
 - `src/scene/Bottle.tsx`, `Box.tsx`, `Ice.tsx`, `Jar.tsx`: los objetos generados en código.
-- `src/scene/textures.ts`: etiquetas y caras del brik (dibujadas en canvas, genéricas, sin marcas).
+- `src/scene/labels.ts`: etiquetas reales de la botella y del brik (imágenes en `src/assets/labels/`).
+- `src/scene/textures.ts`: texturas generadas en canvas (condensación, relieve, espuma, fondo).
 - `src/scene/profile.ts`: silueta de la botella medida sobre la foto de referencia.
 - `src/ui/` y `src/styles.css`: la interfaz.
+
+## Etiquetas
+
+Las etiquetas de Pritty Limón y del brik Toro salen de las fotos de `labels-src/` y se procesan con:
+
+    python3 scripts/make_labels.py     # necesita Pillow
+
+- `pritty-etiqueta.jpg` (3:1, envuelve la botella): el frente es la foto "desenrollada" (se corrige la curvatura);
+  el resto de la vuelta es dorado con las bandas verdes.
+- `toro-frente.jpg` (5:9): la foto enderezada, con la marca de agua tapada y "INDUSTRIA ARGENTINA" redibujado.
+- `toro-dorso.jpg` y `toro-lateral.jpg`: inventados con el mismo estilo (parras, crema, banda oscura).
+
+Las fotos son de baja resolución (600 px); con un arte mejor, reemplazar los archivos de `labels-src/`, ajustar las
+medidas del principio de cada función del script y volver a correrlo.
 
 ## Link de change.org
 
