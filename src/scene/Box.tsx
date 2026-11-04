@@ -8,6 +8,8 @@ export const BOX_W = 1.58
 export const BOX_D = 1.07
 export const BOX_H = 2.73
 const R = 0.07
+/** Bordó de la franja superior del frente (medido sobre toro-frente.jpg), para que el cartón no se note. */
+const BORDO = '#7D1721'
 
 export function Box() {
   const m = useMemo(() => {
@@ -24,7 +26,7 @@ export function Box() {
     <group>
       {/* cuerpo de cartón laminado, satinado */}
       <mesh geometry={m.body}>
-        <meshPhysicalMaterial color="#A3201F" roughness={0.55} clearcoat={0.2} clearcoatRoughness={0.5} envMapIntensity={0.7} />
+        <meshPhysicalMaterial color={BORDO} roughness={0.5} clearcoat={0.3} clearcoatRoughness={0.4} envMapIntensity={0.8} />
       </mesh>
       {/* frente y dorso */}
       <mesh geometry={m.panel} position={[0, 0, BOX_D / 2 + 0.003]}>
@@ -42,12 +44,12 @@ export function Box() {
       {/* aleta de sellado con estrías */}
       <group position={[0, BOX_H / 2 + 0.04, 0]}>
         <mesh geometry={m.fin}>
-          <meshPhysicalMaterial color="#B72A27" roughness={0.45} clearcoat={0.4} />
+          <meshPhysicalMaterial color="#8A1B25" roughness={0.45} clearcoat={0.4} />
         </mesh>
         {ribs.map((x) => (
           <mesh key={x} position={[x, 0, 0.052]}>
             <boxGeometry args={[0.012, 0.075, 0.006]} />
-            <meshStandardMaterial color="#7E1816" roughness={0.6} />
+            <meshStandardMaterial color="#5A1018" roughness={0.6} />
           </mesh>
         ))}
       </group>
