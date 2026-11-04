@@ -1,5 +1,7 @@
 node_modules/
 dist/
 dist-preview/
+# capturas de shots.cjs
 *.png
+!public/*.png
 *.log
