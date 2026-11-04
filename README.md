@@ -33,10 +33,11 @@ link real de la solicitud cuando exista. Lo usa el botón "Firmar la solicitud" 
 - Archivo: `public/audio/cuarteto.mp3` (ruta en `AUDIO_URL`). Suena en loop a volumen 0.6.
 - "Entrar con sonido" la arranca; "Entrar sin sonido" entra en silencio; el ecualizador de arriba a la izquierda
   silencia y reanuda.
-- El mp3 publicado es una copia del original (`../cuarteto.mp3`, sin tocar) recortada en el segundo 193,4 con un
-  fundido de salida de 300 ms, porque el original terminaba con 12,7 s de silencio que cortaban el loop:
+- El mp3 publicado es una copia del original (`../cuarteto.mp3`, sin tocar) recortada en el segundo 191,6 con un
+  fundido de salida de 300 ms. El original termina con el último golpe en ~190,3 s, una cola de reverberación y
+  12,7 s de silencio; el corte deja la cola audible y saca lo que se oía como pausa en el loop:
 
-      ffmpeg -i cuarteto.mp3 -t 193.4 -af "afade=t=out:st=193.1:d=0.3" -c:a libmp3lame -b:a 128k public/audio/cuarteto.mp3
+      ffmpeg -i cuarteto.mp3 -t 191.6 -af "afade=t=out:st=191.3:d=0.3" -c:a libmp3lame -b:a 128k public/audio/cuarteto.mp3
 
   Para cambiar el tema: mp3 de 128 kbps, idealmente de menos de 4 MB y sin silencio al final.
 
