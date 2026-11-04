@@ -9,7 +9,7 @@ export const SECTIONS = [
 
 const STEPS = [
   { t: 'Cortá la botella', d: 'Una botella de gaseosa de 2 litros, cortada a la altura del hombro. Esa es la jarra.' },
-  { t: 'Hielo hasta arriba', d: 'Mucho hielo. Sin hielo no hay pritiado.' },
+  { t: 'Hielo hasta arriba', d: 'Hielo. Sin hielo no hay pritiado.' },
   { t: 'El vino Toro', d: 'Vino Toro de mesa, el de todos los días, de caja.' },
   { t: 'Pritty Limón', d: 'Se completa con Pritty Limón y se pasa de mano en mano.' },
 ]
@@ -34,7 +34,7 @@ export const Content = forwardRef<HTMLDivElement>(function Content(_, ref) {
       <section className="sec" data-sec="0" id="botella">
         <h2 className="d h2">Qué es el pritiado</h2>
         <p className="lead">
-          Es la bebida de Córdoba: vino Toro, Pritty Limón y mucho hielo, preparados y servidos en una botella de
+          Es la bebida de Córdoba: vino Toro, Pritty Limón y hielo, preparados y servidos en una botella de
           plástico cortada. Se toma en juntadas, en el río, en los asados y en los días de calor.
         </p>
 

@@ -167,7 +167,12 @@ function Carousel({
     const vm = viewMetrics(size.width, size.height)
     const t = state.clock.elapsedTime
     const target = c.target - c.dragPx / vm.pxPerUnit / vm.spacing
-    const p = posRef.current + (target - posRef.current) * (1 - Math.exp(-dt * 7))
+    // en el contenido el salto puede ser de dos etapas (caja → jarra): con tope de velocidad, para que el paso
+    // por el hielo se lea como un recorrido (~2 s) y no como un salto
+    const inContent = c.scroll > 0.05
+    let step = (target - posRef.current) * (1 - Math.exp(-dt * (inContent ? 3 : 7)))
+    if (inContent) step = THREE.MathUtils.clamp(step, -1.15 * dt, 1.15 * dt)
+    const p = posRef.current + step
     posRef.current = p
     bubbles.current = THREE.MathUtils.smoothstep(p, 1.9, 2.9)
 
@@ -192,7 +197,7 @@ function Carousel({
       const a = Math.abs(o)
       slot.position.set(o * vm.spacing, 0, -Math.min(a, 1.3) * 5)
       // vecinos: más chicos y se esconden al entrar al contenido
-      const hide = a > 0.5 ? 1 - Math.min(1, s * 4) : 1
+      const hide = 1 - Math.min(1, s * 4) * THREE.MathUtils.smoothstep(a, 0.3, 0.8)
       slot.scale.setScalar(Math.max(0.0001, (1 - 0.16 * Math.min(a, 1)) * hide))
       slot.visible = a < 2.2
       const isActive = i === active
