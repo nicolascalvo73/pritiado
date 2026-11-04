@@ -78,7 +78,11 @@ instalado aparte). Sin GPU usa SwiftShader (`--use-gl=angle --use-angle=swiftsha
 
 ## Deploy
 
-La base de Vite es `/pritiado/` (`vite.config.ts`). `npm run build` genera `dist/`; subir su contenido a la carpeta
+**GitHub Pages (automático):** cada push a `main` corre `.github/workflows/deploy.yml`, que hace `npm ci`,
+`npm run build` y publica `dist/` en https://nicolascalvo73.github.io/pritiado/ (el nombre del repo coincide con la
+base `/pritiado/`). También se puede lanzar a mano desde la pestaña Actions.
+
+**Servidor propio:** la base de Vite es `/pritiado/` (`vite.config.ts`). `npm run build` genera `dist/`; subir su contenido a la carpeta
 `/pritiado/` del servidor (`labs.mondistudio.com.ar/pritiado/`). Para publicar en otra ruta, cambiar `base`.
 
 `vite.preview.config.ts` arma una vista previa de un solo HTML autocontenido (`dist-preview/`) para revisar en el
