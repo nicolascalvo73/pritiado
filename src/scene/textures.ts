@@ -276,7 +276,7 @@ export function makeBoxFaceTexture(kind: 'front' | 'back') {
 
 const BOX_FONT = (px: number) => `italic 900 ${px}px Archivo, 'Arial Black', sans-serif`
 
-/** Texto genérico del brik (sin marca): denominación al frente, letra chica y código de barras al dorso. */
+/** Texto del brik: «VINO TORO» al frente, letra chica y código de barras al dorso. */
 function drawBoxText(g: CanvasRenderingContext2D, kind: 'front' | 'back', w: number, h: number, top: number, bottom: number) {
   const wine = '#7A1830'
   const cx = w / 2
@@ -289,7 +289,7 @@ function drawBoxText(g: CanvasRenderingContext2D, kind: 'front' | 'back', w: num
     g.fillStyle = wine
     g.font = BOX_FONT(118)
     g.fillText('VINO', cx, mid - 20)
-    g.fillText('TINTO', cx, mid + 92)
+    g.fillText('TORO', cx, mid + 92)
     g.fillStyle = '#C79A3B'
     g.fillRect(cx - 150, mid + 128, 300, 5)
     g.fillStyle = wine
@@ -302,7 +302,7 @@ function drawBoxText(g: CanvasRenderingContext2D, kind: 'front' | 'back', w: num
     const x1 = w - 86
     g.fillStyle = wine
     g.font = BOX_FONT(44)
-    g.fillText('VINO TINTO', cx, top + 90)
+    g.fillText('VINO TORO', cx, top + 90)
     g.font = "700 22px 'Hanken Grotesk', system-ui, sans-serif"
     g.fillText('D E   M E S A', cx, top + 128)
     // letra chica ilegible: renglones grises
