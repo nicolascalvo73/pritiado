@@ -38,8 +38,8 @@ export const AUDIO_URL = `${import.meta.env.BASE_URL}audio/cuarteto.mp3`
 
 /** Qué etapa del 3D acompaña a cada sección de contenido. */
 export const SECTION_STAGE = [0, 1, 3] as const
-/** Secciones donde el objeto se muestra de espaldas (para leer el dorso). */
-export const SECTION_BACK = [true, true, false] as const
+/** Secciones donde el objeto se muestra de espaldas. La botella queda de frente para que se vea la etiqueta. */
+export const SECTION_BACK = [false, true, false] as const
 
 export const COLORS = {
   ink: '#12060C',
