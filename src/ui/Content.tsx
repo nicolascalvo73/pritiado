@@ -116,7 +116,10 @@ export const Content = forwardRef<HTMLDivElement>(function Content(_, ref) {
             Fuentes: <a href="https://dle.rae.es/" target="_blank" rel="noopener noreferrer">Diccionario de la lengua española</a>{' '}
             · <a href="https://ich.unesco.org/es/" target="_blank" rel="noopener noreferrer">UNESCO, patrimonio inmaterial</a>
           </p>
-          <p>Un proyecto de Mondi Studio.</p>
+          <p>
+            Un proyecto de <a href="https://www.mondistudio.com.ar/" target="_blank" rel="noopener noreferrer">Mondi Studio</a>{' '}
+            · <a href="mailto:hola@mondistudio.com.ar">hola@mondistudio.com.ar</a>
+          </p>
         </footer>
       </section>
     </div>
